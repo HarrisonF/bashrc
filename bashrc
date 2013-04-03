@@ -152,7 +152,7 @@ export TIME_PS1="\
 # ===== The standard PS1 =====
 user_color=$Blue
 host_color=$Red
-path_color=$Black
+path_color=$Green
 off=$Color_Off
 
 if [ `id -u` -eq 0 ]; then
