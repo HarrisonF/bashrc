@@ -152,7 +152,7 @@ export TIME_PS1="\
 # ===== The standard PS1 =====
 user_color=$Blue
 host_color=$Red
-path_color=$Cyan
+path_color=$Black
 off=$Color_Off
 
 if [ `id -u` -eq 0 ]; then
@@ -170,7 +170,8 @@ BASE_PS1="\
 \[$path_color\]\w\
 \[$off\]\$ "
 
-export PS1="${GIT_PS1}${TIME_PS1}${BASE_PS1}"
+#export PS1="${GIT_PS1}${TIME_PS1}${BASE_PS1}"
+export PS1="${BASE_PS1}"
 
 ls_color=""
 # ===== Aliases =====
