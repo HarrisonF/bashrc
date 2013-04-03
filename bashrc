@@ -230,7 +230,7 @@ ulimit -c 500000000 # 500 MB
 umask 0022
 
 # Vi key-bindings for shell (default is emacs)
-set -o vi
+set -o emacs
 
 # Additional items (wrap up)
 bash_tail=~/.bash_tail
