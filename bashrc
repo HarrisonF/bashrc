@@ -81,6 +81,8 @@ On_IPurple='\e[10;95m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
+off=$Color_Off
+
 # ===== Git Command-Line Completion & PS1 Prefix =====
 # Git completion functions
 git_completion="${HOME}/.git-completion.bash"
@@ -91,23 +93,20 @@ if [ -e $git_completion ]; then
     repo_color=$Purple
     branch_color=$Green
     describe_color=$Yellow
-    off=$Color_Off
 
     GIT_PS1="\
-\$(__gitproject \"[\
+\$(__gitproject \"\
+\[$off\][\
+\[$describe_color\]git\
+\[$off\]:\
 \[$repo_color\]%s\
 \[$off\]:\
 \")\
 \
 \$(__git_ps1 \"\
 \[$branch_color\]%s\
-\[$off\]:\
-\")\
-\
-\$(__gitdescribe \"\
-\[$describe_color\]%s\
-\[$off\]\
-]\n\n\")\
+\[$off\]]\
+\n\n\")\
 "
 fi
 
@@ -134,8 +133,8 @@ function __second() {
     printf "`date +%S`"
 }
 
-export TIME_PS1="\
-[\
+TIME_PS1="\
+\[$off\][\
 \[$date_color\]\$(__year)\
 \[$off\]-\
 \[$date_color\]\$(__month)\
@@ -147,8 +146,8 @@ export TIME_PS1="\
 \[$time_color\]\$(__minute)\
 \[$off\]:\
 \[$time_color\]\$(__second)\
-\[$off\]\
-]
+\[$off\]]\
+\n\
 "
 
 
@@ -166,6 +165,7 @@ if [ `id -u` -eq 0 ]; then
 fi
 
 BASE_PS1="\
+\[$off\]\
 \[$user_color\]\u\
 \[$off\]@\
 \[$host_color\]\h\
@@ -179,6 +179,40 @@ export PS1="${BASE_PS1}"
 #To make directory colors work. Taken from stackoverflow. I don't know how this works.
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+#a -- black
+#b -- red
+#c -- green
+#d -- brown
+#e -- blue
+#f -- magenta
+#g -- cyan
+#h -- light gray
+#A -- bold black, usually shows up as dark gray
+#B -- bold red
+#C -- bold green
+#D -- bold brown, usually shows up as yellow
+#E -- bold blue
+#F -- bold magenta
+#G -- bold cyan
+#H -- bold light gray; looks like bright white
+#x -- default foreground or background
+
+#DIR=Ex
+#SYM_LINK=Gx
+#SOCKET=Fx
+#PIPE=dx
+#EXE=Cx
+#BLOCK_SP=Dx
+#CHAR_SP=Dx
+#EXE_SUID=hb
+#EXE_GUID=ad
+#DIR_STICKY=Ex
+#DIR_WO_STICKY=Ex
+
+export LSCOLORS=GxFxCxDxBxegedabagaced # BSD/OSX
+#export LS_COLORS=GxFxCxDxBxegedabagaced # Linux
+export CLICOLOR=1
 
 ls_color=""
 # ===== Aliases =====
