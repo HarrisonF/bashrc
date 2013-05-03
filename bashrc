@@ -4,6 +4,9 @@ if [ -f $bash_head ]; then
     . $bash_head
 fi
 
+alias +='pushd .'
+alias _='popd'
+
 # ===== BASH Color Escape Sequences =====
 # Reset
 Color_Off='\e[0m'       # Text Reset
@@ -173,6 +176,10 @@ BASE_PS1="\
 #export PS1="${GIT_PS1}${TIME_PS1}${BASE_PS1}"
 export PS1="${BASE_PS1}"
 
+#To make directory colors work. Taken from stackoverflow. I don't know how this works.
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 ls_color=""
 # ===== Aliases =====
 if [ -x /usr/bin/dircolors ]; then
@@ -185,9 +192,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # ls aliases
-alias ls="ls${ls_color} -p"
-alias ll="ls${ls_color} -l"
-alias la="ls${ls_color} -a"
+#alias ls="ls${ls_color} -p"
+#alias ll="ls${ls_color} -l"
+#alias la="ls${ls_color} -a"
 
 # General aliases file
 bash_aliases=~/.bash_aliases
@@ -218,6 +225,7 @@ home_rbin=~/rbin
 if [ -x $home_rbin ]; then
     PATH=$home_rbin:$PATH
 fi
+
 export PATH
 
 export EDITOR=vim
